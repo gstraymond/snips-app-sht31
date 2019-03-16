@@ -56,10 +56,10 @@ class Temperature_Humidity_SHT31(object):
         temp_f = round(self.c_to_f(temp), 1)
 
         print "Celsius: {}*C / Fahrenheit {}*F".format(temp, temp_f)
-        msg = "Il fait {}{} dans la pièce"
+        msg = u"Il fait {}{} dans la pièce"
 
         if self.if_fahrenheit.lower() == "false":
-            msg = msg.format(temp, ' degree')
+            msg = msg.format(temp, ' degres')
         elif self.if_fahrenheit.lower() == "true":
             msg = msg.format(temp_f, ' fahrenheit degree')
         else:
@@ -71,7 +71,7 @@ class Temperature_Humidity_SHT31(object):
         humidity = round(self.get_temperature_humidity('humidity'), 1)
 
         print "Humidity: {}%".format(humidity)
-        msg = "L'humidité est de {}% dans la pièce".format(humidity)
+        msg = u"L'humidité est de {}% dans la pièce".format(humidity)
 
         hermes.publish_end_session(intent_message.session_id, msg)
 
